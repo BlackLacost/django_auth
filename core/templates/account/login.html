@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    {% for message in messages %}
+    <div class="alert alert-success" role="alert">
+      {{ message }}
+    </div>
+    {% endfor %}
+
+    <div class="card card-body">
+      <h1>Login</h1>
+
+      <form action="" method="post">{% csrf_token %}
+        {{ form|crispy }}
+        <span>Don't have an account? <a href="{% url "signup" %}">Sign Up</a></span>
+        <button class="btn btn-success float-right" type="submit">Login</button>
+      </form>
+
+    </div>
+  </div>
+</div>
+{% endblock content %}
